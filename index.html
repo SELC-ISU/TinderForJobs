@@ -1,28 +1,32 @@
+<!DOCTYPE html>
 <html>
     <!-- This is how you write comments -->
     <head>  <!-- This is where processing info and metadata go -->
-        <link rel="stylesheet" type="text/css" href="" title="css_stuff"/>
-        <meta />
-        <script src=""></script> 
+        <link rel="stylesheet" type="text/css" href="style.css" title="css_stuff"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src=""></script>
     </head>
 
     <body> <!-- This is for displayed content! Most things go here -->
-        <h1> What's good.</h1>
-        <p> A document consists of elements.  Each element is started and
-        ended with a pair of tags, like these. </p>
-        <p> This is a paragraph element. Hello world! \n </p>
-        </br> <!-- This is like calling \n, but it's not C. -->
-        <p> There are many different types of elements we can use to display
-        information. </p>
-        <ul>
-            <li> This is a list item </li>
-            <li> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"> This is another one, that's a link. </a> </li>
-        </ul>
-        <div class='wrapper'>
-            <p> There are also these <span style="color: red"> cool</span> things called <strong> divs </strong> that are
-            extremely useful.  They basically "wrap" other elements in a block.  We do this to group things together. </p>
+        <div>
+            <h1 class='flex-item-horiz'> What's good.</h1>
+            <p> A document consists of elements.  Each element is started and
+            ended with a pair of tags, like these. </p>
+            <p> This is a paragraph element. Hello world! \n </p>
+            </br> <!-- This is like calling \n, but it's not C. -->
+            <p> There are many different types of elements we can use to display
+            information. </p>
+            <ul>
+                <li> This is a list item </li>
+                <li> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"> This is another one, that's a link. </a> </li>
+            </ul>
+            <div class='wrapper'>
+                <p> There are also these <span style="color: red"> cool</span> things called <strong> divs </strong> that are
+                extremely useful.  They basically "wrap" other elements in a block.  We do this to group things together. </p>
+            </div>
+            <button id='cmp'> Click me, please. </button>
+            <blockquote>BLOCK QUOTE, WOO.</blockquote>
         </div>
-        <button id='cmp'> Click me, please. </button>
-        <blockquote>BLOCK QUOTE, WOO.</blockquote>
     </body>
 </html>

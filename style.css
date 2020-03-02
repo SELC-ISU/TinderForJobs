@@ -1,5 +1,27 @@
 /* We can write comments like this */
 
+/* Use the "." before a class name to select a class and give it some rules */
+.flex-wrapper {
+    display: flex;
+}
+.flex-item-horiz {
+
+}
+.flex-item-vert {
+}
+
+.wrapper:hover { /* Hover attribute */
+    background-color: green;
+}
+/* Use the "#" before an id to select an id */
+#cmp {
+    background-color: yellow;
+}
+.nav {
+    background-color: blue;
+}
+.wrapper {
+}
 h1 {
 }
 
