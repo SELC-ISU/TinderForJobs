@@ -1,0 +1,12 @@
+.container {
+    border: 5px solid #ffffff;
+    display: flex;
+    flex-direction: row; /* defaults to this, could be column */
+    justify-content: center; /* flex-[start | end | center | space-[around | between | evenly} */
+    
+  }
+
+.container > div {
+    /* Flex is the same as flex-grow combined with flex-basis */
+    flex: 4;
+}
