@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         al.add("Ctrl C");
         al.add("Ctrl V");
         al.add("Ryan 'MIS' Herren");
+        al.add("Andrew & Alexis <3");
 
         arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, al );
 
