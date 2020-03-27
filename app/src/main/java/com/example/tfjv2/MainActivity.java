@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         al.add("Ryan 'MIS' Herren");
         al.add("Andrew & Alexis <3");
         al.add("Tanner is a fucking dumbass");
-        al.add("Another one");
+        al.add("Another card");
 
 
         arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, al );
