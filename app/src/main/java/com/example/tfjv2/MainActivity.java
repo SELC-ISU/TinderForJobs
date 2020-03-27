@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         al.add("Overflow");
         al.add("Ctrl C");
         al.add("Ctrl V");
+        al.add("Ryan 'MIS' Herren");
 
         arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, al );
 
