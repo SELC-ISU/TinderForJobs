@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         al.add("Ctrl C");
         al.add("Ctrl V");
         al.add("Ryan 'MIS' Herren");
-        al.add("Andrew & Alexis <3");
         al.add("Tanner is a fucking dumbass");
         al.add("Who integrated swipe cards Ryan? also learn how to spell \"dumass\".");
+        al.add("I was told to remove line 39");
 
 
         arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, al );
