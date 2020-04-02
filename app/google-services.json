@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "930049870608",
+    "firebase_url": "https://tinderforjobs-bf71d.firebaseio.com",
+    "project_id": "tinderforjobs-bf71d",
+    "storage_bucket": "tinderforjobs-bf71d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930049870608:android:21d418ef2758c001be3395",
+        "android_client_info": {
+          "package_name": "com.example.tfjv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930049870608-e1cafsg3gmcd9727juhf3h0312omttsr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tfjv2",
+            "certificate_hash": "9d1e535c3f1c2e44250e8bd8d8e7fc3565d73ba1"
+          }
+        },
+        {
+          "client_id": "930049870608-99l1jstf3l2v2tvml6jndcbbi6gvblck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb7cgj6XiETT2pVhYes9AahNsasar0VoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930049870608-99l1jstf3l2v2tvml6jndcbbi6gvblck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
