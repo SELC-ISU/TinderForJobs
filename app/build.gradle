@@ -33,6 +33,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.2.1'
     implementation 'com.google.firebase:firebase-auth:19.3.0'
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0855dde96d816cf1d7446aa000acc6e4c4442669
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
