@@ -20,6 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -35,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private DatabaseReference usersDb;
+
+    private String currentUId;
+
     ListView listView;
     List<Cards> rowItems;
 
@@ -43,7 +48,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
+
         mAuth = FirebaseAuth.getInstance();
+
+        currentUId = mAuth.getCurrentUser().getUid();
 
         checkUserProfile();
 
@@ -65,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
+                Cards obj = (Cards) dataObject;
+                String userId = obj.getUserId();
+                usersDb.child(oppositeUserProfile).child(userId).child("connections").child("Not Matched").child(currentUId).setValue(true);
                 //Do something on the left!
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
@@ -73,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onRightCardExit(Object dataObject) {
+                Cards obj = (Cards) dataObject;
+                String userId = obj.getUserId();
+                usersDb.child(oppositeUserProfile).child(userId).child("connections").child("Matches").child(currentUId).setValue(true);
+                isConnectionMatch(userId);
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
             }
 
@@ -95,6 +111,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void isConnectionMatch(String userId) {
+        DatabaseReference currentUserConnectionsDb = usersDb.child(userProfile).child(currentUId).child("connections").child("Matches").child(userId);
+        currentUserConnectionsDb.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    Toast.makeText(MainActivity.this, "new Connection", Toast.LENGTH_SHORT).show();
+                    usersDb.child(oppositeUserProfile).child(dataSnapshot.getKey()).child("connections").child("Matches").child(currentUId).setValue(true);
+                    usersDb.child(userProfile).child(currentUId).child("connections").child("Matches").child(currentUId).setValue(true);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private String userProfile;
@@ -164,9 +199,8 @@ public class MainActivity extends AppCompatActivity {
         oppositeProfileDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                if(dataSnapshot.exists()) {
-
-                    Cards Item = new Cards(dataSnapshot.getKey(), dataSnapshot.child("name").getValue().toString());
+                if(dataSnapshot.exists() && !dataSnapshot.child("connections").child("Matches").hasChild(currentUId)  && !dataSnapshot.child("connections").child("Not Matched").hasChild(currentUId)) {
+                    Cards Item = new Cards(dataSnapshot.getKey(), dataSnapshot.child("name").getValue().toString(), dataSnapshot.child("profileImageUrl").getValue().toString());
                     rowItems.add(Item);
                     arrayAdapter.notifyDataSetChanged();
                 }
@@ -195,6 +229,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, ChooseLoginRegistrationActivity.class );
         startActivity(intent);
         finish();
+        return;
+    }
+
+    public void goToSettings(View view){
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class );
+        intent.putExtra("userProfile", userProfile);
+        startActivity(intent);
         return;
     }
 }
