@@ -39,7 +39,7 @@
             android:paddingLeft="20sp"
             android:textColor="@android:color/black"
             android:gravity="center|left"
-            tools:text="hello"
+            tools:text="Hello"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

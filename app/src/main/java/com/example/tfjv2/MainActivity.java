@@ -200,7 +200,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 if(dataSnapshot.exists() && !dataSnapshot.child("connections").child("Matches").hasChild(currentUId)  && !dataSnapshot.child("connections").child("Not Matched").hasChild(currentUId)) {
-                    Cards Item = new Cards(dataSnapshot.getKey(), dataSnapshot.child("name").getValue().toString(), dataSnapshot.child("profileImageUrl").getValue().toString());
+                    String profileImageUrl = "default";
+                    if(!dataSnapshot.child("profileImageUrl").getValue().equals("default")){
+                        profileImageUrl = dataSnapshot.child("profileImageUrl").getValue().toString();
+                    }
+                    Cards Item = new Cards(dataSnapshot.getKey(), dataSnapshot.child("name").getValue().toString(), profileImageUrl);
                     rowItems.add(Item);
                     arrayAdapter.notifyDataSetChanged();
                 }
